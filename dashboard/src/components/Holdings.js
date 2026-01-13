@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+//useEffect is used to connect to API
 import axios, { all } from "axios";
 import { VerticalGraph } from "./VerticalGraph";
 
@@ -8,11 +9,14 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
+    //axios.get will connect to the link jo hum yha connect krte hai
     axios.get("http://localhost:3002/allHoldings").then((res) => {
       // console.log(res.data);
       setAllHoldings(res.data);
     });
   }, []);
+
+  //we have put empty bracket at the end taaki ye ek hi baar call hoye
 
   // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   const labels = allHoldings.map((subArray) => subArray["name"]);
